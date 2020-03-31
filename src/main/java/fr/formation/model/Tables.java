@@ -14,7 +14,7 @@ public class Tables {
 	@GeneratedValue
 	private long idTables;
 	private int nbPlacesAssisesTables;
-	private String statusTables;
+	private boolean statusTables;
 	
 	@ManyToOne
 	private Reservation reservation;
@@ -24,11 +24,17 @@ public class Tables {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tables(int nbPlacesAssisesTables, String statusTables, Reservation reservation) {
+	public Tables(int nbPlacesAssisesTables, boolean statusTables, Reservation reservation) {
 		super();
 		this.nbPlacesAssisesTables = nbPlacesAssisesTables;
 		this.statusTables = statusTables;
 		this.reservation = reservation;
+	}
+
+	@Override
+	public String toString() {
+		return "Tables [idTables=" + idTables + ", nbPlacesAssisesTables=" + nbPlacesAssisesTables + ", statusTables="
+				+ statusTables + ", reservation=" + reservation + "]";
 	}
 
 	public long getIdTables() {
@@ -47,11 +53,11 @@ public class Tables {
 		this.nbPlacesAssisesTables = nbPlacesAssisesTables;
 	}
 
-	public String getStatusTables() {
+	public boolean isStatusTables() {
 		return statusTables;
 	}
 
-	public void setStatusTables(String statusTables) {
+	public void setStatusTables(boolean statusTables) {
 		this.statusTables = statusTables;
 	}
 
@@ -63,12 +69,7 @@ public class Tables {
 		this.reservation = reservation;
 	}
 
-	@Override
-	public String toString() {
-		return "Table [idTable=" + idTables + ", nbPlacesAssisesTable=" + nbPlacesAssisesTables + ", statusTable="
-				+ statusTables + ", reservation=" + reservation + "]";
-	}
-	
+
 	
 
 }

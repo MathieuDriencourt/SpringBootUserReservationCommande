@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.formation.model.Plat;
 
 import fr.formation.repository.IPlatRepository;
 
+@Service
 public class PlatService implements IPlatService{
 	
 	@Autowired

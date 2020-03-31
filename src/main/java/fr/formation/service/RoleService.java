@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 
 import fr.formation.model.Role;
 import fr.formation.repository.IRoleRepository;
 
+@Service
 public class RoleService implements IRoleService{
 	
 	@Autowired

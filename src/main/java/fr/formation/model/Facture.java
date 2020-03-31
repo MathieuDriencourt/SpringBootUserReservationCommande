@@ -1,12 +1,16 @@
 package fr.formation.model;
 
-import java.sql.Date;
 
+
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Facture {
@@ -15,7 +19,9 @@ public class Facture {
 	@GeneratedValue
 	private long idFacture;
 	private double montantFacture;
+	@Temporal(TemporalType.DATE)
 	private Date dateFacture;
+	private boolean statusFacture;
 
 	
 	@OneToOne
@@ -28,11 +34,19 @@ public class Facture {
 	}
 
 
-	public Facture(double montantFacture, Date dateFacture, Commande commande) {
+	public Facture(double montantFacture, Date dateFacture, boolean statusFacture, Commande commande) {
 		super();
 		this.montantFacture = montantFacture;
 		this.dateFacture = dateFacture;
+		this.statusFacture = statusFacture;
 		this.commande = commande;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Facture [idFacture=" + idFacture + ", montantFacture=" + montantFacture + ", dateFacture=" + dateFacture
+				+ ", statusFacture=" + statusFacture + ", commande=" + commande + "]";
 	}
 
 
@@ -66,6 +80,16 @@ public class Facture {
 	}
 
 
+	public boolean isStatusFacture() {
+		return statusFacture;
+	}
+
+
+	public void setStatusFacture(boolean statusFacture) {
+		this.statusFacture = statusFacture;
+	}
+
+
 	public Commande getCommande() {
 		return commande;
 	}
@@ -76,13 +100,6 @@ public class Facture {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Facture [idFacture=" + idFacture + ", montantFacture=" + montantFacture + ", dateFacture=" + dateFacture
-				+ ", commande=" + commande + "]";
-	}
-	
-	
 
 	
 	

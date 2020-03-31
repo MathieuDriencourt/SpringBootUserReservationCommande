@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.formation.model.Commande;
 
 import fr.formation.repository.ICommandeRepository;
 
+@Service
 public class CommandeService implements ICommandeService{
 	
 	@Autowired
@@ -32,7 +34,11 @@ public class CommandeService implements ICommandeService{
 
 	@Override
 	public Commande createCommande(Commande co) {
+		
+		if (co.getEmployee().getRole().getNomRole() == "Employee") 
 		return commandeRepository.save(co);
+		
+		else return null;
 	}
 
 	@Override
