@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import fr.formation.model.Plat;
+
 
 import fr.formation.service.IPlatService;
 
@@ -23,6 +25,8 @@ public class PlatController {
 	
 	@Autowired
 	IPlatService platService;
+	
+	//ICommandeService commandeService;
 	
 	@GetMapping("/all")
 	public List<Plat> getAllPlat() {
@@ -51,6 +55,15 @@ public class PlatController {
 		platAModifier.setNomPlat(plat.getNomPlat());
 		return platService.updatePlat(platAModifier);
 	}
+	
+//	@PutMapping("/{idP}/set/{idc}")
+//	public boolean affectationPlatCommande(@PathVariable long idP, @PathVariable long idC) {
+//		Plat p=platService.getPlat(idP);
+//		Commande c=commandeService.getCommande(idC);
+//		p.setCommande(c);
+//		platService.createPlat(p);
+//		return true;
+//	}
 	
 	
 }

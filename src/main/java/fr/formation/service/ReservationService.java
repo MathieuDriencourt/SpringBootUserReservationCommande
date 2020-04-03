@@ -33,9 +33,9 @@ public class ReservationService implements IReservationService{
 
 	@Override
 	public Reservation createReservation(Reservation re) {
-		if (re.getClient().getRole().getNomRole() == "Client") 
+		//if (re.getClient().getRole().getNomRole() == "Client") 
 		return reservationRepository.save(re);
-		else return null;
+		//else return null;
 	}
 
 	@Override

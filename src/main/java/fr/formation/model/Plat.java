@@ -2,28 +2,50 @@ package fr.formation.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 
 
 @Entity
 public class Plat {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPlat;
 	private double prixPlat;
 	private String nomPlat;
+
+	
+	//private Commande commande;
 
 	public Plat() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	
+
+	@Override
+	public String toString() {
+		return "Plat [idPlat=" + idPlat + ", prixPlat=" + prixPlat + ", nomPlat=" + nomPlat + "]";
+	}
+
+
+
+
+
 	public Plat(double prixPlat, String nomPlat) {
 		super();
 		this.prixPlat = prixPlat;
 		this.nomPlat = nomPlat;
 	}
+
+
+
+
 
 	public long getIdPlat() {
 		return idPlat;
@@ -49,11 +71,7 @@ public class Plat {
 		this.nomPlat = nomPlat;
 	}
 
-	@Override
-	public String toString() {
-		return "Plat [idPlat=" + idPlat + ", prixPlat=" + prixPlat + ", nomPlat=" + nomPlat + "]";
-	}
-	
+
 	
 	
 

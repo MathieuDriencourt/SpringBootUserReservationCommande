@@ -2,6 +2,7 @@ package fr.formation.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -11,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class Tables {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idTables;
 	private int nbPlacesAssisesTables;
 	private boolean statusTables;

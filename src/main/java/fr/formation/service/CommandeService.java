@@ -35,10 +35,10 @@ public class CommandeService implements ICommandeService{
 	@Override
 	public Commande createCommande(Commande co) {
 		
-		if (co.getEmployee().getRole().getNomRole() == "Employee") 
+//		if (co.getEmployee().getRole().getNomRole() == "Employee") 
 		return commandeRepository.save(co);
 		
-		else return null;
+//		else return null;
 	}
 
 	@Override

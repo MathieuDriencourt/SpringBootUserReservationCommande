@@ -6,11 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.formation.model.Commande;
 import fr.formation.model.LigneCommande;
 import fr.formation.repository.ILigneCommandeRepository;
 
 @Service
-public class LigneCommandeService implements ILigneCommandeService{
+public class LigneCommandeService implements ILigneCommandeService{	
 	
 	@Autowired
 	ILigneCommandeRepository ligneCommandeRepository;
@@ -45,6 +46,11 @@ public class LigneCommandeService implements ILigneCommandeService{
 	@Override
 	public LigneCommande updateLigneCommande(LigneCommande lc) {
 		return ligneCommandeRepository.save(lc);
+	}
+
+	@Override
+	public List<LigneCommande> findByCommande(Commande commande) {
+		return ligneCommandeRepository.findByCommandeIs(commande);
 	}
 
 }

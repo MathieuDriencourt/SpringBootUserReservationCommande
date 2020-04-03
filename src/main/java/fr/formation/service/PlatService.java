@@ -47,5 +47,7 @@ public class PlatService implements IPlatService{
 	public Plat updatePlat(Plat pl) {
 		return platRepository.save(pl);
 	}
+	
+	
 
 }
