@@ -17,16 +17,34 @@ public class Commande {
 	
 	@ManyToOne
 	private User employee;
-
-	public Commande(double montantCommande, User employee) {
-		super();
-		this.montantCommande = montantCommande;
-		this.employee = employee;
-	}
+	@ManyToOne
+	private Plat plat;
+	@ManyToOne
+	private Entree entree;
+	@ManyToOne
+	private Dessert dessert;
+	@ManyToOne
+	private Boisson boisson;
 
 	public Commande() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Commande(double montantCommande, User employee, Plat plat, Entree entree, Dessert dessert, Boisson boisson) {
+		super();
+		this.montantCommande = montantCommande;
+		this.employee = employee;
+		this.plat = plat;
+		this.entree = entree;
+		this.dessert = dessert;
+		this.boisson = boisson;
+	}
+
+	@Override
+	public String toString() {
+		return "Commande [idCommande=" + idCommande + ", montantCommande=" + montantCommande + ", employee=" + employee
+				+ ", plat=" + plat + ", entree=" + entree + ", dessert=" + dessert + ", boisson=" + boisson + "]";
 	}
 
 	public long getIdCommande() {
@@ -53,11 +71,39 @@ public class Commande {
 		this.employee = employee;
 	}
 
-	@Override
-	public String toString() {
-		return "Commande [idCommande=" + idCommande + ", montantCommande=" + montantCommande + ", employee=" + employee
-				+ "]";
+	public Plat getPlat() {
+		return plat;
 	}
+
+	public void setPlat(Plat plat) {
+		this.plat = plat;
+	}
+
+	public Entree getEntree() {
+		return entree;
+	}
+
+	public void setEntree(Entree entree) {
+		this.entree = entree;
+	}
+
+	public Dessert getDessert() {
+		return dessert;
+	}
+
+	public void setDessert(Dessert dessert) {
+		this.dessert = dessert;
+	}
+
+	public Boisson getBoisson() {
+		return boisson;
+	}
+
+	public void setBoisson(Boisson boisson) {
+		this.boisson = boisson;
+	}
+
+	
 	
 	
 	

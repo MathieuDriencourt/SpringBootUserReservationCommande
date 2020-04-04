@@ -15,6 +15,7 @@ public class User {
 	private String nomUser;
 	private String prenomUser;
 	private String mailUser;
+	private String telephoneUser;
 	
 	@OneToOne
 	private Role role;
@@ -24,12 +25,19 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String nomUser, String prenomUser, String mailUser, Role role) {
+	public User(String nomUser, String prenomUser, String mailUser, String telephoneUser, Role role) {
 		super();
 		this.nomUser = nomUser;
 		this.prenomUser = prenomUser;
 		this.mailUser = mailUser;
+		this.telephoneUser = telephoneUser;
 		this.role = role;
+	}
+
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", nomUser=" + nomUser + ", prenomUser=" + prenomUser + ", mailUser="
+				+ mailUser + ", telephoneUser=" + telephoneUser + ", role=" + role + "]";
 	}
 
 	public long getIdUser() {
@@ -64,6 +72,14 @@ public class User {
 		this.mailUser = mailUser;
 	}
 
+	public String getTelephoneUser() {
+		return telephoneUser;
+	}
+
+	public void setTelephoneUser(String telephoneUser) {
+		this.telephoneUser = telephoneUser;
+	}
+
 	public Role getRole() {
 		return role;
 	}
@@ -72,11 +88,6 @@ public class User {
 		this.role = role;
 	}
 
-	@Override
-	public String toString() {
-		return "User [idUser=" + idUser + ", nomUser=" + nomUser + ", prenomUser=" + prenomUser + ", mailUser="
-				+ mailUser + ", role=" + role + "]";
-	}
 	
 	
 }

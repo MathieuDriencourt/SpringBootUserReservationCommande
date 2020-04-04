@@ -6,24 +6,24 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.formation.model.Reservation;
-import fr.formation.repository.IReservationRepository;
+import fr.formation.model.ReservationMidi;
+import fr.formation.repository.IReservationMidiRepository;
 
 @Service
-public class ReservationService implements IReservationService{
+public class ReservationMidiService implements IReservationMidiService{
 	
 	@Autowired
-	IReservationRepository reservationRepository;
+	IReservationMidiRepository reservationRepository;
 
 	@Override
-	public List<Reservation> getAllReservation() {
+	public List<ReservationMidi> getAllReservation() {
 		return reservationRepository.findAll();
 	}
 
 	@Override
-	public Reservation getReservation(Long idReservation) {
-		Optional<Reservation> reservationOptional = reservationRepository.findById(idReservation);
-		Reservation reservation = new Reservation();
+	public ReservationMidi getReservation(Long idReservation) {
+		Optional<ReservationMidi> reservationOptional = reservationRepository.findById(idReservation);
+		ReservationMidi reservation = new ReservationMidi();
 		if (reservationOptional.isPresent()) {
 			reservation = reservationOptional.get();
 		}
@@ -32,7 +32,7 @@ public class ReservationService implements IReservationService{
 	}
 
 	@Override
-	public Reservation createReservation(Reservation re) {
+	public ReservationMidi createReservation(ReservationMidi re) {
 		//if (re.getClient().getRole().getNomRole() == "Client") 
 		return reservationRepository.save(re);
 		//else return null;
@@ -45,7 +45,7 @@ public class ReservationService implements IReservationService{
 	}
 
 	@Override
-	public Reservation updateReservation(Reservation re) {
+	public ReservationMidi updateReservation(ReservationMidi re) {
 		return reservationRepository.save(re);
 	}
 

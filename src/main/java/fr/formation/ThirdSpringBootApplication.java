@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import fr.formation.model.User;
 import fr.formation.service.ICommandeService;
 
-import fr.formation.service.IPlatService;
+import fr.formation.service.IReservationSoirService;
 import fr.formation.service.IRoleService;
 import fr.formation.service.IUserService;
 
@@ -22,7 +22,7 @@ import fr.formation.service.IUserService;
 @SpringBootApplication
 public class ThirdSpringBootApplication implements CommandLineRunner{
 	@Autowired
-	IPlatService servicep;
+	IReservationSoirService servicep;
 	@Autowired
 	ICommandeService servicec;
 	

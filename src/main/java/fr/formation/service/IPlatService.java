@@ -5,10 +5,11 @@ import java.util.List;
 import fr.formation.model.Plat;
 
 
+
 public interface IPlatService {
 
 	
-	public List<Plat> getAllPlat();
+	public List<Plat> getAllPlats();
 	public Plat getPlat(Long idPlat);
 	public Plat createPlat(Plat pl);
 	public int deletePlat(Long idPlat);

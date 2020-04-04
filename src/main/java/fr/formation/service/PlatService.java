@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.formation.model.Plat;
-
 import fr.formation.repository.IPlatRepository;
 
 @Service
@@ -17,9 +16,9 @@ public class PlatService implements IPlatService{
 	IPlatRepository platRepository;
 
 	@Override
-	public List<Plat> getAllPlat() {
+	public List<Plat> getAllPlats() {
 		return platRepository.findAll();
-	}
+		}
 
 	@Override
 	public Plat getPlat(Long idPlat) {
@@ -47,7 +46,5 @@ public class PlatService implements IPlatService{
 	public Plat updatePlat(Plat pl) {
 		return platRepository.save(pl);
 	}
-	
-	
 
 }
