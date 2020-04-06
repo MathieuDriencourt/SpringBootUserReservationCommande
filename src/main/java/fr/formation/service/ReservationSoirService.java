@@ -1,10 +1,12 @@
 package fr.formation.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import fr.formation.model.ReservationSoir;
 
@@ -46,6 +48,28 @@ public class ReservationSoirService implements IReservationSoirService{
 	@Override
 	public ReservationSoir updateReservationSoir(ReservationSoir pl) {
 		return reservationSoirRepository.save(pl);
+	}
+
+	@Override
+	public int placesRestantes(Date dateReservationSoir) {
+		try {
+			List<ReservationSoir>list=reservationSoirRepository.findByDateReservationSoirIs(dateReservationSoir);
+			if (list.size()==0) {
+				return 20;
+			}
+			else {
+				int placesOccupes = 0;
+				for (int i = 0; i < list.size() ; i++) {
+					placesOccupes = placesOccupes + list.get(i).getNbPersonnnesReservationSoir();
+				}
+				return 20 - placesOccupes;
+			}
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		return 0;
+	}
 	}
 	
 	

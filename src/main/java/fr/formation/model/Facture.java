@@ -3,7 +3,7 @@ package fr.formation.model;
 
 
 
-import java.util.Date;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,12 +19,12 @@ public class Facture {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idFacture;
 	private double montantFacture;
-	private Date dateFacture;
-	private boolean statusFacture;
+	
 
 	
 	@OneToOne
 	private Commande commande;
+
 
 
 	public Facture() {
@@ -33,20 +33,21 @@ public class Facture {
 	}
 
 
-	public Facture(double montantFacture, Date dateFacture, boolean statusFacture, Commande commande) {
+
+	public Facture(double montantFacture, Commande commande) {
 		super();
 		this.montantFacture = montantFacture;
-		this.dateFacture = dateFacture;
-		this.statusFacture = statusFacture;
 		this.commande = commande;
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "Facture [idFacture=" + idFacture + ", montantFacture=" + montantFacture + ", dateFacture=" + dateFacture
-				+ ", statusFacture=" + statusFacture + ", commande=" + commande + "]";
+		return "Facture [idFacture=" + idFacture + ", montantFacture=" + montantFacture + ", commande=" + commande
+				+ "]";
 	}
+
 
 
 	public long getIdFacture() {
@@ -54,9 +55,11 @@ public class Facture {
 	}
 
 
+
 	public void setIdFacture(long idFacture) {
 		this.idFacture = idFacture;
 	}
+
 
 
 	public double getMontantFacture() {
@@ -64,29 +67,11 @@ public class Facture {
 	}
 
 
+
 	public void setMontantFacture(double montantFacture) {
 		this.montantFacture = montantFacture;
 	}
 
-
-	public Date getDateFacture() {
-		return dateFacture;
-	}
-
-
-	public void setDateFacture(Date dateFacture) {
-		this.dateFacture = dateFacture;
-	}
-
-
-	public boolean isStatusFacture() {
-		return statusFacture;
-	}
-
-
-	public void setStatusFacture(boolean statusFacture) {
-		this.statusFacture = statusFacture;
-	}
 
 
 	public Commande getCommande() {
@@ -94,10 +79,13 @@ public class Facture {
 	}
 
 
+
 	public void setCommande(Commande commande) {
 		this.commande = commande;
 	}
 
+
+	
 
 
 	

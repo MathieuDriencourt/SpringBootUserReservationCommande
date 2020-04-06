@@ -1,5 +1,6 @@
 package fr.formation.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,12 +17,12 @@ public class ReservationMidiService implements IReservationMidiService{
 	IReservationMidiRepository reservationRepository;
 
 	@Override
-	public List<ReservationMidi> getAllReservation() {
+	public List<ReservationMidi> getAllReservationMidi() {
 		return reservationRepository.findAll();
 	}
 
 	@Override
-	public ReservationMidi getReservation(Long idReservation) {
+	public ReservationMidi getReservationMidi(Long idReservation) {
 		Optional<ReservationMidi> reservationOptional = reservationRepository.findById(idReservation);
 		ReservationMidi reservation = new ReservationMidi();
 		if (reservationOptional.isPresent()) {
@@ -32,21 +33,43 @@ public class ReservationMidiService implements IReservationMidiService{
 	}
 
 	@Override
-	public ReservationMidi createReservation(ReservationMidi re) {
-		//if (re.getClient().getRole().getNomRole() == "Client") 
+	public ReservationMidi createReservationMidi(ReservationMidi re) {
+		
 		return reservationRepository.save(re);
-		//else return null;
+		
 	}
 
 	@Override
-	public int deleteReservation(Long idReservation) {
+	public int deleteReservationMidi(Long idReservation) {
 		reservationRepository.deleteById(idReservation);
 		return 1;
 	}
 
 	@Override
-	public ReservationMidi updateReservation(ReservationMidi re) {
+	public ReservationMidi updateReservationMidi(ReservationMidi re) {
 		return reservationRepository.save(re);
 	}
 
+	@Override
+	public int nbPlacesRestantes(Date dateReservationMidi) {
+		try {
+			List<ReservationMidi>list=reservationRepository.findByDateReservationMidiIs(dateReservationMidi);
+			if (list.size()==0) {
+				return 20;
+			}
+			else {
+				int placesOccupes = 0;
+				for (int i = 0; i < list.size() ; i++) {
+					placesOccupes = placesOccupes + list.get(i).getNbPersonnnesReservationMidi();
+				}
+				return 20 - placesOccupes;
+			}
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			return 0;
+	}
+	}	
 }

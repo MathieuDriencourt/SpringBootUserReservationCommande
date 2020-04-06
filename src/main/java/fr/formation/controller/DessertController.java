@@ -17,7 +17,7 @@ import fr.formation.model.Dessert;
 import fr.formation.service.IDessertService;
 
 @RestController
-@RequestMapping("Dessert") //URL du webservice
+@RequestMapping("dessert") //URL du webservice
 @CrossOrigin("http://localhost:4200")
 public class DessertController {
 	

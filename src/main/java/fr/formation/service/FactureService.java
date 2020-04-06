@@ -6,8 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.formation.model.Commande;
 import fr.formation.model.Facture;
-
+import fr.formation.repository.ICommandeRepository;
 import fr.formation.repository.IFactureRepository;
 
 @Service
@@ -15,6 +16,9 @@ public class FactureService implements IFactureService{
 	
 	@Autowired
 	IFactureRepository factureRepository;
+	@Autowired
+	ICommandeRepository commandeRepository;
+	
 
 	@Override
 	public List<Facture> getAllFacture() {
@@ -50,5 +54,25 @@ public class FactureService implements IFactureService{
 		return factureRepository.save(fa);
 		
 	}
-
+	
+	@Override
+	public Facture createBis(Long idCommande) {
+		Optional<Commande> commandeOptional = commandeRepository.findById(idCommande);
+		Commande commande = new Commande();
+		if (commandeOptional.isPresent()) {
+			commande = commandeOptional.get();
+		}
+		double prixTot = 0;
+		prixTot = prixTot + (commande.getQteEntree())*(commande.getEntree().getPrixEntree()) 
+				+ (commande.getQtePlat())*(commande.getPlat().getPrixPlat()) 
+				+ (commande.getQteDessert())*(commande.getDessert().getPrixDessert()) 
+				+ (commande.getQteBoisson())*(commande.getBoisson().getPrixBoisson());
+		Facture facture = new Facture();
+		facture.setMontantFacture(prixTot);
+		facture.setCommande(commande);
+		return factureRepository.save(facture);
+	}
+		
+	
+	
 }

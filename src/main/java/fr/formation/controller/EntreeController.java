@@ -1,4 +1,4 @@
-package fr.formation.controller;
+		package fr.formation.controller;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import fr.formation.model.Entree;
 import fr.formation.service.IEntreeService;
 
 @RestController
-@RequestMapping("Entree") //URL du webservice
+@RequestMapping("entree") //URL du webservice
 @CrossOrigin("http://localhost:4200")
 public class EntreeController {
 	

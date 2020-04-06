@@ -14,4 +14,5 @@ public interface IFactureService {
 	public Facture createFacture(Facture fa);
 	public int deleteFacture(Long idFacture);
 	public Facture updateFacture(Facture fa);
+	public Facture createBis(Long idCommande);
 }

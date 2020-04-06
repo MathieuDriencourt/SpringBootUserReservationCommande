@@ -1,5 +1,6 @@
 package fr.formation.service;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.formation.model.ReservationMidi;
@@ -8,9 +9,10 @@ import fr.formation.model.ReservationMidi;
 
 public interface IReservationMidiService {
 
-	public List<ReservationMidi> getAllReservation();
-	public ReservationMidi getReservation(Long idReservation);
-	public ReservationMidi createReservation(ReservationMidi rm);
-	public int deleteReservation(Long idReservation);
-	public ReservationMidi updateReservation(ReservationMidi rm);
+	public List<ReservationMidi> getAllReservationMidi();
+	public ReservationMidi getReservationMidi(Long idReservation);
+	public ReservationMidi createReservationMidi(ReservationMidi rm);
+	public int deleteReservationMidi(Long idReservation);
+	public ReservationMidi updateReservationMidi(ReservationMidi rm);
+	public int nbPlacesRestantes (Date date);
 }

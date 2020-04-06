@@ -33,6 +33,8 @@ public class FactureController {
 	ICommandeService commandeService;
 	
 	
+	
+	
 	@GetMapping("/all")
 	public List<Facture> getAllFacture() {
 		return factureService.getAllFacture();
@@ -57,8 +59,6 @@ public class FactureController {
 	public Facture updateFacture(@PathVariable long id, @RequestBody Facture facture) {
 		Facture factureAModifier = factureService.getFacture(id);
 		factureAModifier.setMontantFacture(facture.getMontantFacture());
-		factureAModifier.setDateFacture(facture.getDateFacture());
-		factureAModifier.setStatusFacture(facture.isStatusFacture());
 		return factureService.updateFacture(factureAModifier);
 	}
 	
@@ -70,4 +70,29 @@ public class FactureController {
 		factureService.createFacture(alinker);
 		return true;
 	}
+	
+//	@PostMapping("/{idCommande}")
+//	public Facture create(Facture facture, @PathVariable long idCommande) {
+//	try {Commande commande1 = new Commande();
+//		commande1.setIdCommande(idCommande);
+//		double prixTot = 0;
+//		prixTot = prixTot + (commande1.getQteEntree())*(commande1.getEntree().getPrixEntree()) 
+//				+ (commande1.getQtePlat())*(commande1.getPlat().getPrixPlat()) 
+//				+ (commande1.getQteDessert())*(commande1.getDessert().getPrixDessert()) 
+//				+ (commande1.getQteBoisson())*(commande1.getBoisson().getPrixBoisson());
+//		facture.setMontantFacture(prixTot);
+//		facture.setCommande(commande1);
+//		return factureService.createFacture(facture);
+//	}
+//	catch(Exception e) {
+//		e.printStackTrace();
+//		return null;
+//	}
+//	}
+	
+		@PostMapping("/{idCommande}")
+		public Facture createBis(@PathVariable long idCommande) {
+			return factureService.createBis(idCommande);
+		}
+	
 }

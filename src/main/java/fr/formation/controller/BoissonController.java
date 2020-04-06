@@ -17,7 +17,7 @@ import fr.formation.model.Boisson;
 import fr.formation.service.IBoissonService;
 
 @RestController
-@RequestMapping("Boisson") //URL du webservice
+@RequestMapping("boisson") //URL du webservice
 @CrossOrigin("http://localhost:4200")
 public class BoissonController {
 	

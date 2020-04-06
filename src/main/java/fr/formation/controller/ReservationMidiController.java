@@ -20,42 +20,49 @@ import fr.formation.service.IReservationMidiService;
 
 
 @RestController
-@RequestMapping("reservationmidi") //URL du webservice
+@RequestMapping("reservationMidi") //URL du webservice
 @CrossOrigin("http://localhost:4200")
 public class ReservationMidiController {
 
 	
 	@Autowired
-	IReservationMidiService reservationService;
+	IReservationMidiService reservationMidiService;
 	
 	//IUserService userService;
 	
 	@GetMapping("/all")
 	public List<ReservationMidi> getAllReservation() {
-		return reservationService.getAllReservation();
+		return reservationMidiService.getAllReservationMidi();
 	}
 	
 	@GetMapping("/{id}")
 	public ReservationMidi getById(@PathVariable long id) {
-		return reservationService.getReservation(id);
+		return reservationMidiService.getReservationMidi(id);
 	}
 	
 	@PostMapping
 	public ReservationMidi createReservation(@RequestBody ReservationMidi reservation) {
-		return reservationService.createReservation(reservation);
+		if (reservationMidiService.nbPlacesRestantes(reservation.getDateReservationMidi())>=reservation.getNbPersonnnesReservationMidi()) {
+			return reservationMidiService.createReservationMidi(reservation);
+		}
+		else {
+			System.out.println("Il n'y a plus assez de places disponibles à cette date !");
+			return null;
+		}
+		
 	}
 	
 	@DeleteMapping("/{id}")
 	public int deleteReservation(@PathVariable long id) {
-		return reservationService.deleteReservation(id);
+		return reservationMidiService.deleteReservationMidi(id);
 	}
 	
 	@PutMapping("/{id}")
 	public ReservationMidi updateReservation(@PathVariable long id, @RequestBody ReservationMidi reservation) {
-		ReservationMidi reservationAModifier = reservationService.getReservation(id);
+		ReservationMidi reservationAModifier = reservationMidiService.getReservationMidi(id);
 		reservationAModifier.setDateReservationMidi(reservation.getDateReservationMidi());
 		reservationAModifier.setNbPersonnnesReservationMidi(reservation.getNbPersonnnesReservationMidi());
-		return reservationService.updateReservation(reservationAModifier);
+		return reservationMidiService.updateReservationMidi(reservationAModifier);
 	}
 	
 //	@PutMapping("/{idR}/set/{idU}")

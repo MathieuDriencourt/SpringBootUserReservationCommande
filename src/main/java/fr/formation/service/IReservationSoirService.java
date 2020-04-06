@@ -1,5 +1,6 @@
 package fr.formation.service;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.formation.model.ReservationSoir;
@@ -13,4 +14,5 @@ public interface IReservationSoirService {
 	public ReservationSoir createReservationSoir(ReservationSoir rs);
 	public int deleteReservationSoir(Long idReservationSoir);
 	public ReservationSoir updateReservationSoir(ReservationSoir rs);
+	public int placesRestantes(Date dateReservationSoir);
 }
