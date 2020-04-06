@@ -53,7 +53,6 @@ public class CommandeController {
 	@PutMapping("/{id}")
 	public Commande updateCommande(@PathVariable long id, @RequestBody Commande commande) {
 		Commande commandeAModifier = commandeService.getCommande(id);
-		commandeAModifier.setMontantCommande(commande.getMontantCommande());
 		commandeAModifier.setQteEntree(commande.getQteEntree());
 		commandeAModifier.setQtePlat(commande.getQtePlat());
 		commandeAModifier.setQteDessert(commande.getQteDessert());
